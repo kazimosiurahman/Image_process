@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-image_path = r'C:\Users\Kazi\Desktop\exclude\image_process\test_image.jpg'
+image_path = r'C:\Users\Kazi\Desktop\exclude\image_process\detecting_tracks\test_image.jpg'
 video_path = r"C:\Users\Kazi\Desktop\exclude\image_process\test2.mp4"
 
 def average_slope_intercept(image,lines):
@@ -69,20 +69,20 @@ def process_image(lane_image):
 	line_image = display_line(lane_image,average_lines)
 	combo_image = cv2.addWeighted(lane_image,0.5,line_image,1,1)
 	cv2.imshow("result",combo_image)
-	cv2.waitKey(2)
+	cv2.waitKey(0)
 
-# image = cv2.imread(image_path)
-# lane_image = np.copy(image)
-# process_image(lane_image)
-cap = cv2.VideoCapture(video_path)
+image = cv2.imread(image_path)
+lane_image = np.copy(image)
+process_image(lane_image)
+# cap = cv2.VideoCapture(video_path)
 
-while(cap.isOpened()):
-	_,frame = cap.read()
-	process_image(frame)
-	if cv2.waitKey(1) & 0xFF == ord('q'):
-		break
-cap.release()
-cv2.destroyAllWindows()
+# while(cap.isOpened()):
+# 	_,frame = cap.read()
+# 	process_image(frame)
+# 	if cv2.waitKey(1) & 0xFF == ord('q'):
+# 		break
+# cap.release()
+# cv2.destroyAllWindows()
 
 
 
